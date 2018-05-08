@@ -147,7 +147,7 @@ def convert_tree_ensemble(model, feature_names, target, force_32bit_float):
         raise TypeError("Unexpected type. Expecting XGBoost model.")
 
     mlkit_tree = _TreeEnsembleRegressor(feature_names, target)
-    mlkit_tree.set_default_prediction_value(0.5)
+    mlkit_tree.set_default_prediction_value([0,0,0,0,0,0,0,0,0,0,0,0,0,0,0])
     for xgb_tree_id, xgb_tree_str in enumerate(xgb_model_str):
         xgb_tree_json = json.loads(xgb_tree_str)
         recurse_json(mlkit_tree, xgb_tree_json, xgb_tree_id, node_id = 0,
